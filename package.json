@@ -13,13 +13,16 @@
   "private": true,
   "packageManager": "yarn@1.22.22",
   "dependencies": {
+    "@angular/cdk": "^21.0.2",
     "@angular/common": "~20.3.0",
     "@angular/compiler": "~20.3.0",
     "@angular/core": "~20.3.0",
     "@angular/forms": "~20.3.0",
+    "@angular/material": "^21.0.2",
     "@angular/platform-browser": "~20.3.0",
     "@angular/platform-browser-dynamic": "~20.3.0",
     "@angular/router": "~20.3.0",
+    "@auth0/angular-jwt": "^5.2.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },

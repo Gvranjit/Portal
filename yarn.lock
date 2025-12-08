@@ -331,6 +331,14 @@
   optionalDependencies:
     lmdb "3.4.2"
 
+"@angular/cdk@^21.0.2":
+  version "21.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-21.0.2.tgz#873f825da5e17c7a41b1bfc9b849b0db0a428454"
+  integrity sha512-IbQOmbjiYhERZQseUmaLb7wegj/a7GDQEIOmC1Y71wk/WFfadX3S8WH5Wx6xVlaldg08jSUt2Djq/10hOSgsJg==
+  dependencies:
+    parse5 "^8.0.0"
+    tslib "^2.3.0"
+
 "@angular/cli@~20.3.0":
   version "20.3.5"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-20.3.5.tgz#0b2f37fb7d913fee83b3563589b39ca564e7e7c4"
@@ -402,6 +410,13 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-20.3.4.tgz#556a9243b1aeaf8575584737eeb1e82cfa4a421b"
   integrity sha512-nwmB8MlZIxOBId24nwZRTq08lhwDKGgr5Y1khIbpitIreIM4T4Iy79fR58C+PhfOhq5aMOCJ4mdRkIk4G/GJEA==
 
+"@angular/material@^21.0.2":
+  version "21.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-21.0.2.tgz#3df31ff6f9b7e97b4a5cecb7a459820c3e99779b"
+  integrity sha512-TCF0p5TFgv/WfGzFDIpHpcnAYKFL3Sv59jWTYdcdLYM2K4SURnp+v/hd5xUmn+dVsQkhQaeaF8ODDbMTYd/EPA==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/platform-browser-dynamic@~20.3.0":
   version "20.3.4"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-20.3.4.tgz#72d54ff68319346405fa69382aabda967ecfe393"
@@ -422,6 +437,13 @@
   integrity sha512-qMVurWXVplYeHBKOWtQFtD+MfwOc0i/VJaFPGdiM5mDlfhtsg3OHcZBbSTmQW02l/4YimF5Ee3+pac279p+g1A==
   dependencies:
     tslib "^2.3.0"
+
+"@auth0/angular-jwt@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-5.2.0.tgz#3a734be51f7f4b1bb85ac2535e987b7e6e706481"
+  integrity sha512-9FS2L0QwGNlxA/zgeehCcsR9CZscouyXkoIj1fODM36A8BLfdzg9k9DWAXUQ2Drjk0AypGAFzeNZR4vsLMhdeQ==
+  dependencies:
+    tslib "^2.0.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.27.1":
   version "7.27.1"
