@@ -2,8 +2,16 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "ng": "nx",
+    "start": "nx serve my-portal",
+    "build": "nx build my-portal",
+    "test": "jest test my-portal",
+    "lint": "nx lint my-portal",
+    "create-component": "nx g @nx/angular:application apps/my-app"
+  },
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@angular/common": "~20.3.0",
     "@angular/compiler": "~20.3.0",
