@@ -1,3 +1,9 @@
 import { Route } from '@angular/router';
+import { Dropzone } from './pages/dropzone';
 
-export const appRoutes: Route[] = [];
+export const appRoutes: Route[] = [
+  {
+    path: 'dropzone',
+    component: Dropzone,
+  },
+];

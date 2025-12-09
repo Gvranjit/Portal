@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "nx",
     "start": "nx serve my-portal",
+    "snapboard": "nx serve snapboard",
     "build": "nx build my-portal",
     "test": "jest test my-portal",
     "lint": "nx lint my-portal",
-    "create-component": "nx g @nx/angular:application apps/my-app"
+    "create-component": "nx g c apps/my-app/src"
   },
   "private": true,
   "packageManager": "yarn@1.22.22",
