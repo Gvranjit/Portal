@@ -1,10 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dropzone',
-  imports: [MatCardModule, MatIconModule],
+  imports: [MatCardModule, MatIconModule, CdkDrag],
   templateUrl: './dropzone.html',
   styleUrl: './dropzone.scss',
 })
@@ -12,7 +13,7 @@ export class Dropzone implements OnDestroy {
   pastedImages: string[] = [];
   redoStack: string[] = [];
   _pastedImage: string | null = null;
-  imageScale = 0;
+  imageScale = 1;
   get pastedImage(): string | null {
     return this._pastedImage;
   }
@@ -35,6 +36,7 @@ export class Dropzone implements OnDestroy {
   private keydownHandler(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       this.pastedImage = null;
+      this.pastedImages = [];
     } else if (event.ctrlKey && event.key.toLowerCase() === 'z') {
       this.undoHandler();
     } else if (event.ctrlKey && event.key.toLowerCase() === 'y') {
@@ -80,9 +82,24 @@ export class Dropzone implements OnDestroy {
   private scrollHandler(event: WheelEvent): void {
     if (this.pastedImage) {
       event.preventDefault();
-      this.imageScale = event.deltaY * -0.01;
+      this.imageScale += event.deltaY * -0.001;
       // Implement zooming logic here based on scaleAmount
     }
+  }
+
+  public bringToFront(id: `pasted-image-${number}`): void {
+    //set the selected component at the top (z-index wise)
+    const element = document.getElementById(id);
+    if (element) {
+      element.style.zIndex = '9999';
+    }
+    // reset z-index of other elements
+    this.pastedImages.forEach((_, index) => {
+      const otherElement = document.getElementById(`pasted-image-${index}`);
+      if (otherElement && otherElement.id !== id) {
+        otherElement.style.zIndex = '1';
+      }
+    });
   }
 
   ngOnDestroy() {

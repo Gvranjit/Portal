@@ -11,13 +11,23 @@
   <mat-card-title
     >Pasted Image{{pastedImages.length>1?'s ' + pastedImages.length :null}}
   </mat-card-title>
-  <mat-card-content>
-    <img
-      [style]="'transform: scale(' + ( imageScale) + ')' "
-      class="pasted-image"
-      [src]="pastedImage"
-      alt="Pasted image"
-    />
-  </mat-card-content>
-  }
+
+  @for (pastedImage of pastedImages; track $index) {
+  <div
+    cdkDrag
+    [id]="'pasted-image-' + $index"
+    class="dropzone-image-container"
+    [style]="'transform: scale(' + ( imageScale) + ')' "
+  >
+    <mat-card-content>
+      <div
+        tabindex="0"
+        (mousedown)="bringToFront(`pasted-image-${$index}`)"
+        (keydown.enter)="bringToFront(`pasted-image-${$index}`)"
+      >
+        <img class="pasted-image" [src]="pastedImage" alt="Pasted image" />
+      </div>
+    </mat-card-content>
+  </div>
+  } }
 </mat-card>
