@@ -1,5 +1,4 @@
-﻿
-# Purpose
+﻿# Purpose
 
 This micro frontend provides a reusable drag-and-drop image upload UI. It does not handle file storage. Consumers must supply their own upload API.
 
@@ -21,10 +20,7 @@ This micro frontend provides a reusable drag-and-drop image upload UI. It does n
 ## Quick usage example
 
 ```html
-<mfe-uploader
-  [uploadHandler]="myUploadFunction"
-  (fileDropped)="onFile($event)">
-</mfe-uploader>
+<mfe-uploader [uploadHandler]="myUploadFunction" (fileDropped)="onFile($event)"> </mfe-uploader>
 ```
 
 ## Styling
@@ -34,10 +30,10 @@ This micro frontend provides a reusable drag-and-drop image upload UI. It does n
 
 # Module Federation
 
-Since this project is going to be an MFE, Module federation will be incoroporated 
+Since this project is going to be an MFE, Module federation will be incoroporated
 
 [Reference](https://module-federation.io/practice/frameworks/angular/angular-mfe)
 
-
 ---
+
 [Home](../../README.md)

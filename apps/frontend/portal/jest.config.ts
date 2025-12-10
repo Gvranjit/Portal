@@ -1,8 +1,8 @@
 export default {
   displayName: 'my-portal',
-  preset: '../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/my-portal',
+  coverageDirectory: '../../../coverage/apps/frontend/portal',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

@@ -1,28 +1,28 @@
 {
   "name": "snapboard",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/snapboard/src",
+  "sourceRoot": "apps/frontend/snapboard/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/snapboard",
-        "index": "apps/snapboard/src/index.html",
-        "main": "apps/snapboard/src/main.ts",
+        "outputPath": "dist/apps/frontend/snapboard",
+        "index": "apps/frontend/snapboard/src/index.html",
+        "main": "apps/frontend/snapboard/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/snapboard/tsconfig.app.json",
+        "tsConfig": "apps/frontend/snapboard/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/snapboard/public"
+            "input": "apps/frontend/snapboard/public"
           }
         ],
-        "styles": ["apps/snapboard/src/styles.scss"]
+        "styles": ["apps/frontend/snapboard/src/styles.scss"]
       },
       "configurations": {
         "production": {
@@ -77,8 +77,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/snapboard/jest.config.ts",
-        "tsConfig": "apps/snapboard/tsconfig.spec.json"
+        "jestConfig": "apps/frontend/snapboard/jest.config.ts",
+        "tsConfig": "apps/frontend/snapboard/tsconfig.spec.json"
       }
     },
     "serve-static": {

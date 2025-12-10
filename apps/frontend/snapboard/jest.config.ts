@@ -1,8 +1,8 @@
 export default {
   displayName: 'snapboard',
-  preset: '../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/snapboard',
+  coverageDirectory: '../../../coverage/apps/frontend/snapboard',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
