@@ -1,15 +1,11 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express, { Request, Response, NextFunction } from 'express';
 import * as path from 'path';
 import routes from './routes';
 import { uploadFolder } from './storage.config';
-
+import morgan from 'morgan';
 const app = express();
 
+app.use(morgan('dev'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/i', express.static(uploadFolder));
 app.use(express.json());
