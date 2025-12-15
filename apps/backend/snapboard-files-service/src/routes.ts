@@ -1,6 +1,6 @@
 // set up a basic route for the snapboard-files-service
 import { Router, Request, Response } from 'express';
-import { uploadController } from './controllers';
+import { getSnapsController, uploadController } from './controllers';
 import { upload } from './storage.config';
 const router = Router();
 
@@ -9,5 +9,6 @@ router.get('/api/health-check', (req: Request, res: Response) => {
 });
 
 router.post('/api/upload', upload.single('file') as any, uploadController);
+router.get('/api/getSnaps', getSnapsController);
 
 export default router;
