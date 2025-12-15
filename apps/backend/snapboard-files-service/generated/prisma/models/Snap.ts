@@ -28,72 +28,82 @@ export type AggregateSnap = {
 
 export type SnapAvgAggregateOutputType = {
   id: number | null
-  authorId: number | null
+  size: number | null
+  createdById: number | null
 }
 
 export type SnapSumAggregateOutputType = {
   id: number | null
-  authorId: number | null
+  size: number | null
+  createdById: number | null
 }
 
 export type SnapMinAggregateOutputType = {
   id: number | null
   title: string | null
-  content: string | null
-  published: boolean | null
-  authorId: number | null
+  filename: string | null
+  mimeType: string | null
+  size: number | null
+  createdById: number | null
 }
 
 export type SnapMaxAggregateOutputType = {
   id: number | null
   title: string | null
-  content: string | null
-  published: boolean | null
-  authorId: number | null
+  filename: string | null
+  mimeType: string | null
+  size: number | null
+  createdById: number | null
 }
 
 export type SnapCountAggregateOutputType = {
   id: number
   title: number
-  content: number
-  published: number
-  authorId: number
+  filename: number
+  mimeType: number
+  size: number
+  createdById: number
   _all: number
 }
 
 
 export type SnapAvgAggregateInputType = {
   id?: true
-  authorId?: true
+  size?: true
+  createdById?: true
 }
 
 export type SnapSumAggregateInputType = {
   id?: true
-  authorId?: true
+  size?: true
+  createdById?: true
 }
 
 export type SnapMinAggregateInputType = {
   id?: true
   title?: true
-  content?: true
-  published?: true
-  authorId?: true
+  filename?: true
+  mimeType?: true
+  size?: true
+  createdById?: true
 }
 
 export type SnapMaxAggregateInputType = {
   id?: true
   title?: true
-  content?: true
-  published?: true
-  authorId?: true
+  filename?: true
+  mimeType?: true
+  size?: true
+  createdById?: true
 }
 
 export type SnapCountAggregateInputType = {
   id?: true
   title?: true
-  content?: true
-  published?: true
-  authorId?: true
+  filename?: true
+  mimeType?: true
+  size?: true
+  createdById?: true
   _all?: true
 }
 
@@ -185,10 +195,11 @@ export type SnapGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type SnapGroupByOutputType = {
   id: number
-  title: string
-  content: string | null
-  published: boolean
-  authorId: number
+  title: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdById: number
   _count: SnapCountAggregateOutputType | null
   _avg: SnapAvgAggregateOutputType | null
   _sum: SnapSumAggregateOutputType | null
@@ -216,20 +227,24 @@ export type SnapWhereInput = {
   OR?: Prisma.SnapWhereInput[]
   NOT?: Prisma.SnapWhereInput | Prisma.SnapWhereInput[]
   id?: Prisma.IntFilter<"Snap"> | number
-  title?: Prisma.StringFilter<"Snap"> | string
-  content?: Prisma.StringNullableFilter<"Snap"> | string | null
-  published?: Prisma.BoolFilter<"Snap"> | boolean
-  authorId?: Prisma.IntFilter<"Snap"> | number
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  title?: Prisma.StringNullableFilter<"Snap"> | string | null
+  filename?: Prisma.StringFilter<"Snap"> | string
+  mimeType?: Prisma.StringFilter<"Snap"> | string
+  size?: Prisma.IntFilter<"Snap"> | number
+  createdById?: Prisma.IntFilter<"Snap"> | number
+  createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  thumbnails?: Prisma.ThumbnailListRelationFilter
 }
 
 export type SnapOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  content?: Prisma.SortOrderInput | Prisma.SortOrder
-  published?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
-  author?: Prisma.UserOrderByWithRelationInput
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
+  filename?: Prisma.SortOrder
+  mimeType?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
+  createdBy?: Prisma.UserOrderByWithRelationInput
+  thumbnails?: Prisma.ThumbnailOrderByRelationAggregateInput
 }
 
 export type SnapWhereUniqueInput = Prisma.AtLeast<{
@@ -237,19 +252,22 @@ export type SnapWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SnapWhereInput | Prisma.SnapWhereInput[]
   OR?: Prisma.SnapWhereInput[]
   NOT?: Prisma.SnapWhereInput | Prisma.SnapWhereInput[]
-  title?: Prisma.StringFilter<"Snap"> | string
-  content?: Prisma.StringNullableFilter<"Snap"> | string | null
-  published?: Prisma.BoolFilter<"Snap"> | boolean
-  authorId?: Prisma.IntFilter<"Snap"> | number
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  title?: Prisma.StringNullableFilter<"Snap"> | string | null
+  filename?: Prisma.StringFilter<"Snap"> | string
+  mimeType?: Prisma.StringFilter<"Snap"> | string
+  size?: Prisma.IntFilter<"Snap"> | number
+  createdById?: Prisma.IntFilter<"Snap"> | number
+  createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  thumbnails?: Prisma.ThumbnailListRelationFilter
 }, "id">
 
 export type SnapOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  content?: Prisma.SortOrderInput | Prisma.SortOrder
-  published?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
+  filename?: Prisma.SortOrder
+  mimeType?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
   _count?: Prisma.SnapCountOrderByAggregateInput
   _avg?: Prisma.SnapAvgOrderByAggregateInput
   _max?: Prisma.SnapMaxOrderByAggregateInput
@@ -262,62 +280,74 @@ export type SnapScalarWhereWithAggregatesInput = {
   OR?: Prisma.SnapScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SnapScalarWhereWithAggregatesInput | Prisma.SnapScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Snap"> | number
-  title?: Prisma.StringWithAggregatesFilter<"Snap"> | string
-  content?: Prisma.StringNullableWithAggregatesFilter<"Snap"> | string | null
-  published?: Prisma.BoolWithAggregatesFilter<"Snap"> | boolean
-  authorId?: Prisma.IntWithAggregatesFilter<"Snap"> | number
+  title?: Prisma.StringNullableWithAggregatesFilter<"Snap"> | string | null
+  filename?: Prisma.StringWithAggregatesFilter<"Snap"> | string
+  mimeType?: Prisma.StringWithAggregatesFilter<"Snap"> | string
+  size?: Prisma.IntWithAggregatesFilter<"Snap"> | number
+  createdById?: Prisma.IntWithAggregatesFilter<"Snap"> | number
 }
 
 export type SnapCreateInput = {
-  title: string
-  content?: string | null
-  published?: boolean
-  author: Prisma.UserCreateNestedOneWithoutPostsInput
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdBy: Prisma.UserCreateNestedOneWithoutPostsInput
+  thumbnails?: Prisma.ThumbnailCreateNestedManyWithoutSnapInput
 }
 
 export type SnapUncheckedCreateInput = {
   id?: number
-  title: string
-  content?: string | null
-  published?: boolean
-  authorId: number
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdById: number
+  thumbnails?: Prisma.ThumbnailUncheckedCreateNestedManyWithoutSnapInput
 }
 
 export type SnapUpdateInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  author?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+  thumbnails?: Prisma.ThumbnailUpdateManyWithoutSnapNestedInput
 }
 
 export type SnapUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.IntFieldUpdateOperationsInput | number
+  thumbnails?: Prisma.ThumbnailUncheckedUpdateManyWithoutSnapNestedInput
 }
 
 export type SnapCreateManyInput = {
   id?: number
-  title: string
-  content?: string | null
-  published?: boolean
-  authorId: number
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdById: number
 }
 
 export type SnapUpdateManyMutationInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SnapUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SnapListRelationFilter = {
@@ -333,120 +363,144 @@ export type SnapOrderByRelationAggregateInput = {
 export type SnapCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  content?: Prisma.SortOrder
-  published?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  filename?: Prisma.SortOrder
+  mimeType?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
 }
 
 export type SnapAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
 }
 
 export type SnapMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  content?: Prisma.SortOrder
-  published?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  filename?: Prisma.SortOrder
+  mimeType?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
 }
 
 export type SnapMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  content?: Prisma.SortOrder
-  published?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  filename?: Prisma.SortOrder
+  mimeType?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
 }
 
 export type SnapSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  authorId?: Prisma.SortOrder
+  size?: Prisma.SortOrder
+  createdById?: Prisma.SortOrder
 }
 
-export type SnapCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput> | Prisma.SnapCreateWithoutAuthorInput[] | Prisma.SnapUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutAuthorInput | Prisma.SnapCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.SnapCreateManyAuthorInputEnvelope
+export type SnapScalarRelationFilter = {
+  is?: Prisma.SnapWhereInput
+  isNot?: Prisma.SnapWhereInput
+}
+
+export type SnapCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput> | Prisma.SnapCreateWithoutCreatedByInput[] | Prisma.SnapUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutCreatedByInput | Prisma.SnapCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.SnapCreateManyCreatedByInputEnvelope
   connect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
 }
 
-export type SnapUncheckedCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput> | Prisma.SnapCreateWithoutAuthorInput[] | Prisma.SnapUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutAuthorInput | Prisma.SnapCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.SnapCreateManyAuthorInputEnvelope
+export type SnapUncheckedCreateNestedManyWithoutCreatedByInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput> | Prisma.SnapCreateWithoutCreatedByInput[] | Prisma.SnapUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutCreatedByInput | Prisma.SnapCreateOrConnectWithoutCreatedByInput[]
+  createMany?: Prisma.SnapCreateManyCreatedByInputEnvelope
   connect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
 }
 
-export type SnapUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput> | Prisma.SnapCreateWithoutAuthorInput[] | Prisma.SnapUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutAuthorInput | Prisma.SnapCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.SnapUpsertWithWhereUniqueWithoutAuthorInput | Prisma.SnapUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.SnapCreateManyAuthorInputEnvelope
+export type SnapUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput> | Prisma.SnapCreateWithoutCreatedByInput[] | Prisma.SnapUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutCreatedByInput | Prisma.SnapCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.SnapUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.SnapUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.SnapCreateManyCreatedByInputEnvelope
   set?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   disconnect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   delete?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   connect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
-  update?: Prisma.SnapUpdateWithWhereUniqueWithoutAuthorInput | Prisma.SnapUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.SnapUpdateManyWithWhereWithoutAuthorInput | Prisma.SnapUpdateManyWithWhereWithoutAuthorInput[]
+  update?: Prisma.SnapUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.SnapUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.SnapUpdateManyWithWhereWithoutCreatedByInput | Prisma.SnapUpdateManyWithWhereWithoutCreatedByInput[]
   deleteMany?: Prisma.SnapScalarWhereInput | Prisma.SnapScalarWhereInput[]
 }
 
-export type SnapUncheckedUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput> | Prisma.SnapCreateWithoutAuthorInput[] | Prisma.SnapUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutAuthorInput | Prisma.SnapCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.SnapUpsertWithWhereUniqueWithoutAuthorInput | Prisma.SnapUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.SnapCreateManyAuthorInputEnvelope
+export type SnapUncheckedUpdateManyWithoutCreatedByNestedInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput> | Prisma.SnapCreateWithoutCreatedByInput[] | Prisma.SnapUncheckedCreateWithoutCreatedByInput[]
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutCreatedByInput | Prisma.SnapCreateOrConnectWithoutCreatedByInput[]
+  upsert?: Prisma.SnapUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.SnapUpsertWithWhereUniqueWithoutCreatedByInput[]
+  createMany?: Prisma.SnapCreateManyCreatedByInputEnvelope
   set?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   disconnect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   delete?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
   connect?: Prisma.SnapWhereUniqueInput | Prisma.SnapWhereUniqueInput[]
-  update?: Prisma.SnapUpdateWithWhereUniqueWithoutAuthorInput | Prisma.SnapUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.SnapUpdateManyWithWhereWithoutAuthorInput | Prisma.SnapUpdateManyWithWhereWithoutAuthorInput[]
+  update?: Prisma.SnapUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.SnapUpdateWithWhereUniqueWithoutCreatedByInput[]
+  updateMany?: Prisma.SnapUpdateManyWithWhereWithoutCreatedByInput | Prisma.SnapUpdateManyWithWhereWithoutCreatedByInput[]
   deleteMany?: Prisma.SnapScalarWhereInput | Prisma.SnapScalarWhereInput[]
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
+export type SnapCreateNestedOneWithoutThumbnailsInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutThumbnailsInput
+  connect?: Prisma.SnapWhereUniqueInput
 }
 
-export type SnapCreateWithoutAuthorInput = {
-  title: string
-  content?: string | null
-  published?: boolean
+export type SnapUpdateOneRequiredWithoutThumbnailsNestedInput = {
+  create?: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
+  connectOrCreate?: Prisma.SnapCreateOrConnectWithoutThumbnailsInput
+  upsert?: Prisma.SnapUpsertWithoutThumbnailsInput
+  connect?: Prisma.SnapWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SnapUpdateToOneWithWhereWithoutThumbnailsInput, Prisma.SnapUpdateWithoutThumbnailsInput>, Prisma.SnapUncheckedUpdateWithoutThumbnailsInput>
 }
 
-export type SnapUncheckedCreateWithoutAuthorInput = {
+export type SnapCreateWithoutCreatedByInput = {
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  thumbnails?: Prisma.ThumbnailCreateNestedManyWithoutSnapInput
+}
+
+export type SnapUncheckedCreateWithoutCreatedByInput = {
   id?: number
-  title: string
-  content?: string | null
-  published?: boolean
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  thumbnails?: Prisma.ThumbnailUncheckedCreateNestedManyWithoutSnapInput
 }
 
-export type SnapCreateOrConnectWithoutAuthorInput = {
+export type SnapCreateOrConnectWithoutCreatedByInput = {
   where: Prisma.SnapWhereUniqueInput
-  create: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput>
 }
 
-export type SnapCreateManyAuthorInputEnvelope = {
-  data: Prisma.SnapCreateManyAuthorInput | Prisma.SnapCreateManyAuthorInput[]
+export type SnapCreateManyCreatedByInputEnvelope = {
+  data: Prisma.SnapCreateManyCreatedByInput | Prisma.SnapCreateManyCreatedByInput[]
   skipDuplicates?: boolean
 }
 
-export type SnapUpsertWithWhereUniqueWithoutAuthorInput = {
+export type SnapUpsertWithWhereUniqueWithoutCreatedByInput = {
   where: Prisma.SnapWhereUniqueInput
-  update: Prisma.XOR<Prisma.SnapUpdateWithoutAuthorInput, Prisma.SnapUncheckedUpdateWithoutAuthorInput>
-  create: Prisma.XOR<Prisma.SnapCreateWithoutAuthorInput, Prisma.SnapUncheckedCreateWithoutAuthorInput>
+  update: Prisma.XOR<Prisma.SnapUpdateWithoutCreatedByInput, Prisma.SnapUncheckedUpdateWithoutCreatedByInput>
+  create: Prisma.XOR<Prisma.SnapCreateWithoutCreatedByInput, Prisma.SnapUncheckedCreateWithoutCreatedByInput>
 }
 
-export type SnapUpdateWithWhereUniqueWithoutAuthorInput = {
+export type SnapUpdateWithWhereUniqueWithoutCreatedByInput = {
   where: Prisma.SnapWhereUniqueInput
-  data: Prisma.XOR<Prisma.SnapUpdateWithoutAuthorInput, Prisma.SnapUncheckedUpdateWithoutAuthorInput>
+  data: Prisma.XOR<Prisma.SnapUpdateWithoutCreatedByInput, Prisma.SnapUncheckedUpdateWithoutCreatedByInput>
 }
 
-export type SnapUpdateManyWithWhereWithoutAuthorInput = {
+export type SnapUpdateManyWithWhereWithoutCreatedByInput = {
   where: Prisma.SnapScalarWhereInput
-  data: Prisma.XOR<Prisma.SnapUpdateManyMutationInput, Prisma.SnapUncheckedUpdateManyWithoutAuthorInput>
+  data: Prisma.XOR<Prisma.SnapUpdateManyMutationInput, Prisma.SnapUncheckedUpdateManyWithoutCreatedByInput>
 }
 
 export type SnapScalarWhereInput = {
@@ -454,98 +508,194 @@ export type SnapScalarWhereInput = {
   OR?: Prisma.SnapScalarWhereInput[]
   NOT?: Prisma.SnapScalarWhereInput | Prisma.SnapScalarWhereInput[]
   id?: Prisma.IntFilter<"Snap"> | number
-  title?: Prisma.StringFilter<"Snap"> | string
-  content?: Prisma.StringNullableFilter<"Snap"> | string | null
-  published?: Prisma.BoolFilter<"Snap"> | boolean
-  authorId?: Prisma.IntFilter<"Snap"> | number
+  title?: Prisma.StringNullableFilter<"Snap"> | string | null
+  filename?: Prisma.StringFilter<"Snap"> | string
+  mimeType?: Prisma.StringFilter<"Snap"> | string
+  size?: Prisma.IntFilter<"Snap"> | number
+  createdById?: Prisma.IntFilter<"Snap"> | number
 }
 
-export type SnapCreateManyAuthorInput = {
+export type SnapCreateWithoutThumbnailsInput = {
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdBy: Prisma.UserCreateNestedOneWithoutPostsInput
+}
+
+export type SnapUncheckedCreateWithoutThumbnailsInput = {
   id?: number
-  title: string
-  content?: string | null
-  published?: boolean
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+  createdById: number
 }
 
-export type SnapUpdateWithoutAuthorInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+export type SnapCreateOrConnectWithoutThumbnailsInput = {
+  where: Prisma.SnapWhereUniqueInput
+  create: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
 }
 
-export type SnapUncheckedUpdateWithoutAuthorInput = {
+export type SnapUpsertWithoutThumbnailsInput = {
+  update: Prisma.XOR<Prisma.SnapUpdateWithoutThumbnailsInput, Prisma.SnapUncheckedUpdateWithoutThumbnailsInput>
+  create: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
+  where?: Prisma.SnapWhereInput
+}
+
+export type SnapUpdateToOneWithWhereWithoutThumbnailsInput = {
+  where?: Prisma.SnapWhereInput
+  data: Prisma.XOR<Prisma.SnapUpdateWithoutThumbnailsInput, Prisma.SnapUncheckedUpdateWithoutThumbnailsInput>
+}
+
+export type SnapUpdateWithoutThumbnailsInput = {
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdBy?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+}
+
+export type SnapUncheckedUpdateWithoutThumbnailsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdById?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type SnapUncheckedUpdateManyWithoutAuthorInput = {
+export type SnapCreateManyCreatedByInput = {
+  id?: number
+  title?: string | null
+  filename: string
+  mimeType: string
+  size: number
+}
+
+export type SnapUpdateWithoutCreatedByInput = {
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  thumbnails?: Prisma.ThumbnailUpdateManyWithoutSnapNestedInput
+}
+
+export type SnapUncheckedUpdateWithoutCreatedByInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+  thumbnails?: Prisma.ThumbnailUncheckedUpdateManyWithoutSnapNestedInput
 }
 
+export type SnapUncheckedUpdateManyWithoutCreatedByInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  filename?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  size?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+
+/**
+ * Count Type SnapCountOutputType
+ */
+
+export type SnapCountOutputType = {
+  thumbnails: number
+}
+
+export type SnapCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  thumbnails?: boolean | SnapCountOutputTypeCountThumbnailsArgs
+}
+
+/**
+ * SnapCountOutputType without action
+ */
+export type SnapCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SnapCountOutputType
+   */
+  select?: Prisma.SnapCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SnapCountOutputType without action
+ */
+export type SnapCountOutputTypeCountThumbnailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ThumbnailWhereInput
+}
 
 
 export type SnapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  content?: boolean
-  published?: boolean
-  authorId?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  filename?: boolean
+  mimeType?: boolean
+  size?: boolean
+  createdById?: boolean
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  thumbnails?: boolean | Prisma.Snap$thumbnailsArgs<ExtArgs>
+  _count?: boolean | Prisma.SnapCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["snap"]>
 
 export type SnapSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  content?: boolean
-  published?: boolean
-  authorId?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  filename?: boolean
+  mimeType?: boolean
+  size?: boolean
+  createdById?: boolean
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["snap"]>
 
 export type SnapSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  content?: boolean
-  published?: boolean
-  authorId?: boolean
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  filename?: boolean
+  mimeType?: boolean
+  size?: boolean
+  createdById?: boolean
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["snap"]>
 
 export type SnapSelectScalar = {
   id?: boolean
   title?: boolean
-  content?: boolean
-  published?: boolean
-  authorId?: boolean
+  filename?: boolean
+  mimeType?: boolean
+  size?: boolean
+  createdById?: boolean
 }
 
-export type SnapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "published" | "authorId", ExtArgs["result"]["snap"]>
+export type SnapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "filename" | "mimeType" | "size" | "createdById", ExtArgs["result"]["snap"]>
 export type SnapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  thumbnails?: boolean | Prisma.Snap$thumbnailsArgs<ExtArgs>
+  _count?: boolean | Prisma.SnapCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SnapIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SnapIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $SnapPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Snap"
   objects: {
-    author: Prisma.$UserPayload<ExtArgs>
+    createdBy: Prisma.$UserPayload<ExtArgs>
+    thumbnails: Prisma.$ThumbnailPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    title: string
-    content: string | null
-    published: boolean
-    authorId: number
+    title: string | null
+    filename: string
+    mimeType: string
+    size: number
+    createdById: number
   }, ExtArgs["result"]["snap"]>
   composites: {}
 }
@@ -940,7 +1090,8 @@ readonly fields: SnapFieldRefs;
  */
 export interface Prisma__SnapClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  createdBy<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  thumbnails<T extends Prisma.Snap$thumbnailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Snap$thumbnailsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ThumbnailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -972,9 +1123,10 @@ export interface Prisma__SnapClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface SnapFieldRefs {
   readonly id: Prisma.FieldRef<"Snap", 'Int'>
   readonly title: Prisma.FieldRef<"Snap", 'String'>
-  readonly content: Prisma.FieldRef<"Snap", 'String'>
-  readonly published: Prisma.FieldRef<"Snap", 'Boolean'>
-  readonly authorId: Prisma.FieldRef<"Snap", 'Int'>
+  readonly filename: Prisma.FieldRef<"Snap", 'String'>
+  readonly mimeType: Prisma.FieldRef<"Snap", 'String'>
+  readonly size: Prisma.FieldRef<"Snap", 'Int'>
+  readonly createdById: Prisma.FieldRef<"Snap", 'Int'>
 }
     
 
@@ -1368,6 +1520,30 @@ export type SnapDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Snaps to delete.
    */
   limit?: number
+}
+
+/**
+ * Snap.thumbnails
+ */
+export type Snap$thumbnailsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Thumbnail
+   */
+  select?: Prisma.ThumbnailSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Thumbnail
+   */
+  omit?: Prisma.ThumbnailOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ThumbnailInclude<ExtArgs> | null
+  where?: Prisma.ThumbnailWhereInput
+  orderBy?: Prisma.ThumbnailOrderByWithRelationInput | Prisma.ThumbnailOrderByWithRelationInput[]
+  cursor?: Prisma.ThumbnailWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ThumbnailScalarFieldEnum | Prisma.ThumbnailScalarFieldEnum[]
 }
 
 /**

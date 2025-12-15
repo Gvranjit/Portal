@@ -243,27 +243,27 @@ export type UserScalarWhereWithAggregatesInput = {
 export type UserCreateInput = {
   email: string
   name?: string | null
-  posts?: Prisma.SnapCreateNestedManyWithoutAuthorInput
+  posts?: Prisma.SnapCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: number
   email: string
   name?: string | null
-  posts?: Prisma.SnapUncheckedCreateNestedManyWithoutAuthorInput
+  posts?: Prisma.SnapUncheckedCreateNestedManyWithoutCreatedByInput
 }
 
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  posts?: Prisma.SnapUpdateManyWithoutAuthorNestedInput
+  posts?: Prisma.SnapUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  posts?: Prisma.SnapUncheckedUpdateManyWithoutAuthorNestedInput
+  posts?: Prisma.SnapUncheckedUpdateManyWithoutCreatedByNestedInput
 }
 
 export type UserCreateManyInput = {

@@ -27,3 +27,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Snap = Prisma.SnapModel
+/**
+ * Model Thumbnail
+ * 
+ */
+export type Thumbnail = Prisma.ThumbnailModel

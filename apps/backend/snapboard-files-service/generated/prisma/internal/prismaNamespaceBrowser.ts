@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Snap: 'Snap'
+  Snap: 'Snap',
+  Thumbnail: 'Thumbnail'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -83,12 +84,24 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const SnapScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId'
+  filename: 'filename',
+  mimeType: 'mimeType',
+  size: 'size',
+  createdById: 'createdById'
 } as const
 
 export type SnapScalarFieldEnum = (typeof SnapScalarFieldEnum)[keyof typeof SnapScalarFieldEnum]
+
+
+export const ThumbnailScalarFieldEnum = {
+  id: 'id',
+  snapId: 'snapId',
+  filename: 'filename',
+  mimeType: 'mimeType',
+  size: 'size'
+} as const
+
+export type ThumbnailScalarFieldEnum = (typeof ThumbnailScalarFieldEnum)[keyof typeof ThumbnailScalarFieldEnum]
 
 
 export const SortOrder = {

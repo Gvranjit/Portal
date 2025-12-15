@@ -385,7 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  Snap: 'Snap'
+  Snap: 'Snap',
+  Thumbnail: 'Thumbnail'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "snap"
+    modelProps: "user" | "snap" | "thumbnail"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +554,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Thumbnail: {
+      payload: Prisma.$ThumbnailPayload<ExtArgs>
+      fields: Prisma.ThumbnailFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ThumbnailFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ThumbnailFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        findFirst: {
+          args: Prisma.ThumbnailFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ThumbnailFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        findMany: {
+          args: Prisma.ThumbnailFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+        }
+        create: {
+          args: Prisma.ThumbnailCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        createMany: {
+          args: Prisma.ThumbnailCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ThumbnailCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+        }
+        delete: {
+          args: Prisma.ThumbnailDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        update: {
+          args: Prisma.ThumbnailUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        deleteMany: {
+          args: Prisma.ThumbnailDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ThumbnailUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ThumbnailUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>[]
+        }
+        upsert: {
+          args: Prisma.ThumbnailUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ThumbnailPayload>
+        }
+        aggregate: {
+          args: Prisma.ThumbnailAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateThumbnail>
+        }
+        groupBy: {
+          args: Prisma.ThumbnailGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ThumbnailGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ThumbnailCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ThumbnailCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -604,12 +679,24 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const SnapScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId'
+  filename: 'filename',
+  mimeType: 'mimeType',
+  size: 'size',
+  createdById: 'createdById'
 } as const
 
 export type SnapScalarFieldEnum = (typeof SnapScalarFieldEnum)[keyof typeof SnapScalarFieldEnum]
+
+
+export const ThumbnailScalarFieldEnum = {
+  id: 'id',
+  snapId: 'snapId',
+  filename: 'filename',
+  mimeType: 'mimeType',
+  size: 'size'
+} as const
+
+export type ThumbnailScalarFieldEnum = (typeof ThumbnailScalarFieldEnum)[keyof typeof ThumbnailScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -667,13 +754,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -787,6 +867,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   snap?: Prisma.SnapOmit
+  thumbnail?: Prisma.ThumbnailOmit
 }
 
 /* Types for Logging */
