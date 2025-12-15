@@ -87,7 +87,8 @@ export const SnapScalarFieldEnum = {
   filename: 'filename',
   mimeType: 'mimeType',
   size: 'size',
-  createdById: 'createdById'
+  createdById: 'createdById',
+  createdAt: 'createdAt'
 } as const
 
 export type SnapScalarFieldEnum = (typeof SnapScalarFieldEnum)[keyof typeof SnapScalarFieldEnum]

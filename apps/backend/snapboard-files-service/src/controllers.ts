@@ -38,13 +38,15 @@ export const getSnapsController = async (
   next: NextFunction
 ) => {
   try {
-    const snaps = await prisma.snap.findMany(); // TODO: Add pagination
+    const snaps = await prisma.snap.findMany({ include: { createdBy: true } }); // TODO: Add pagination
     const payload = snaps.map((snap) => ({
       id: snap.id,
       filename: snap.filename,
       url: new URL(`/i/${snap.filename}`, env.BASE_URL).toString(),
       mimeType: snap.mimeType,
       size: snap.size,
+      createdAt: snap.createdAt,
+      createdByEmail: snap.createdBy.email,
     }));
     res.send({
       message: 'Snaps retrieved successfully',

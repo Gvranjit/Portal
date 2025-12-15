@@ -45,6 +45,7 @@ export type SnapMinAggregateOutputType = {
   mimeType: string | null
   size: number | null
   createdById: number | null
+  createdAt: Date | null
 }
 
 export type SnapMaxAggregateOutputType = {
@@ -54,6 +55,7 @@ export type SnapMaxAggregateOutputType = {
   mimeType: string | null
   size: number | null
   createdById: number | null
+  createdAt: Date | null
 }
 
 export type SnapCountAggregateOutputType = {
@@ -63,6 +65,7 @@ export type SnapCountAggregateOutputType = {
   mimeType: number
   size: number
   createdById: number
+  createdAt: number
   _all: number
 }
 
@@ -86,6 +89,7 @@ export type SnapMinAggregateInputType = {
   mimeType?: true
   size?: true
   createdById?: true
+  createdAt?: true
 }
 
 export type SnapMaxAggregateInputType = {
@@ -95,6 +99,7 @@ export type SnapMaxAggregateInputType = {
   mimeType?: true
   size?: true
   createdById?: true
+  createdAt?: true
 }
 
 export type SnapCountAggregateInputType = {
@@ -104,6 +109,7 @@ export type SnapCountAggregateInputType = {
   mimeType?: true
   size?: true
   createdById?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -200,6 +206,7 @@ export type SnapGroupByOutputType = {
   mimeType: string
   size: number
   createdById: number
+  createdAt: Date
   _count: SnapCountAggregateOutputType | null
   _avg: SnapAvgAggregateOutputType | null
   _sum: SnapSumAggregateOutputType | null
@@ -232,6 +239,7 @@ export type SnapWhereInput = {
   mimeType?: Prisma.StringFilter<"Snap"> | string
   size?: Prisma.IntFilter<"Snap"> | number
   createdById?: Prisma.IntFilter<"Snap"> | number
+  createdAt?: Prisma.DateTimeFilter<"Snap"> | Date | string
   createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   thumbnails?: Prisma.ThumbnailListRelationFilter
 }
@@ -243,6 +251,7 @@ export type SnapOrderByWithRelationInput = {
   mimeType?: Prisma.SortOrder
   size?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   createdBy?: Prisma.UserOrderByWithRelationInput
   thumbnails?: Prisma.ThumbnailOrderByRelationAggregateInput
 }
@@ -257,6 +266,7 @@ export type SnapWhereUniqueInput = Prisma.AtLeast<{
   mimeType?: Prisma.StringFilter<"Snap"> | string
   size?: Prisma.IntFilter<"Snap"> | number
   createdById?: Prisma.IntFilter<"Snap"> | number
+  createdAt?: Prisma.DateTimeFilter<"Snap"> | Date | string
   createdBy?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   thumbnails?: Prisma.ThumbnailListRelationFilter
 }, "id">
@@ -268,6 +278,7 @@ export type SnapOrderByWithAggregationInput = {
   mimeType?: Prisma.SortOrder
   size?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.SnapCountOrderByAggregateInput
   _avg?: Prisma.SnapAvgOrderByAggregateInput
   _max?: Prisma.SnapMaxOrderByAggregateInput
@@ -285,6 +296,7 @@ export type SnapScalarWhereWithAggregatesInput = {
   mimeType?: Prisma.StringWithAggregatesFilter<"Snap"> | string
   size?: Prisma.IntWithAggregatesFilter<"Snap"> | number
   createdById?: Prisma.IntWithAggregatesFilter<"Snap"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Snap"> | Date | string
 }
 
 export type SnapCreateInput = {
@@ -292,6 +304,7 @@ export type SnapCreateInput = {
   filename: string
   mimeType: string
   size: number
+  createdAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutPostsInput
   thumbnails?: Prisma.ThumbnailCreateNestedManyWithoutSnapInput
 }
@@ -303,6 +316,7 @@ export type SnapUncheckedCreateInput = {
   mimeType: string
   size: number
   createdById: number
+  createdAt?: Date | string
   thumbnails?: Prisma.ThumbnailUncheckedCreateNestedManyWithoutSnapInput
 }
 
@@ -311,6 +325,7 @@ export type SnapUpdateInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   thumbnails?: Prisma.ThumbnailUpdateManyWithoutSnapNestedInput
 }
@@ -322,6 +337,7 @@ export type SnapUncheckedUpdateInput = {
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   thumbnails?: Prisma.ThumbnailUncheckedUpdateManyWithoutSnapNestedInput
 }
 
@@ -332,6 +348,7 @@ export type SnapCreateManyInput = {
   mimeType: string
   size: number
   createdById: number
+  createdAt?: Date | string
 }
 
 export type SnapUpdateManyMutationInput = {
@@ -339,6 +356,7 @@ export type SnapUpdateManyMutationInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SnapUncheckedUpdateManyInput = {
@@ -348,6 +366,7 @@ export type SnapUncheckedUpdateManyInput = {
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SnapListRelationFilter = {
@@ -367,6 +386,7 @@ export type SnapCountOrderByAggregateInput = {
   mimeType?: Prisma.SortOrder
   size?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type SnapAvgOrderByAggregateInput = {
@@ -382,6 +402,7 @@ export type SnapMaxOrderByAggregateInput = {
   mimeType?: Prisma.SortOrder
   size?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type SnapMinOrderByAggregateInput = {
@@ -391,6 +412,7 @@ export type SnapMinOrderByAggregateInput = {
   mimeType?: Prisma.SortOrder
   size?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type SnapSumOrderByAggregateInput = {
@@ -446,6 +468,10 @@ export type SnapUncheckedUpdateManyWithoutCreatedByNestedInput = {
   deleteMany?: Prisma.SnapScalarWhereInput | Prisma.SnapScalarWhereInput[]
 }
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
 export type SnapCreateNestedOneWithoutThumbnailsInput = {
   create?: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
   connectOrCreate?: Prisma.SnapCreateOrConnectWithoutThumbnailsInput
@@ -465,6 +491,7 @@ export type SnapCreateWithoutCreatedByInput = {
   filename: string
   mimeType: string
   size: number
+  createdAt?: Date | string
   thumbnails?: Prisma.ThumbnailCreateNestedManyWithoutSnapInput
 }
 
@@ -474,6 +501,7 @@ export type SnapUncheckedCreateWithoutCreatedByInput = {
   filename: string
   mimeType: string
   size: number
+  createdAt?: Date | string
   thumbnails?: Prisma.ThumbnailUncheckedCreateNestedManyWithoutSnapInput
 }
 
@@ -513,6 +541,7 @@ export type SnapScalarWhereInput = {
   mimeType?: Prisma.StringFilter<"Snap"> | string
   size?: Prisma.IntFilter<"Snap"> | number
   createdById?: Prisma.IntFilter<"Snap"> | number
+  createdAt?: Prisma.DateTimeFilter<"Snap"> | Date | string
 }
 
 export type SnapCreateWithoutThumbnailsInput = {
@@ -520,6 +549,7 @@ export type SnapCreateWithoutThumbnailsInput = {
   filename: string
   mimeType: string
   size: number
+  createdAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutPostsInput
 }
 
@@ -530,6 +560,7 @@ export type SnapUncheckedCreateWithoutThumbnailsInput = {
   mimeType: string
   size: number
   createdById: number
+  createdAt?: Date | string
 }
 
 export type SnapCreateOrConnectWithoutThumbnailsInput = {
@@ -553,6 +584,7 @@ export type SnapUpdateWithoutThumbnailsInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
 }
 
@@ -563,6 +595,7 @@ export type SnapUncheckedUpdateWithoutThumbnailsInput = {
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
   createdById?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SnapCreateManyCreatedByInput = {
@@ -571,6 +604,7 @@ export type SnapCreateManyCreatedByInput = {
   filename: string
   mimeType: string
   size: number
+  createdAt?: Date | string
 }
 
 export type SnapUpdateWithoutCreatedByInput = {
@@ -578,6 +612,7 @@ export type SnapUpdateWithoutCreatedByInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   thumbnails?: Prisma.ThumbnailUpdateManyWithoutSnapNestedInput
 }
 
@@ -587,6 +622,7 @@ export type SnapUncheckedUpdateWithoutCreatedByInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   thumbnails?: Prisma.ThumbnailUncheckedUpdateManyWithoutSnapNestedInput
 }
 
@@ -596,6 +632,7 @@ export type SnapUncheckedUpdateManyWithoutCreatedByInput = {
   filename?: Prisma.StringFieldUpdateOperationsInput | string
   mimeType?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -636,6 +673,7 @@ export type SnapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   mimeType?: boolean
   size?: boolean
   createdById?: boolean
+  createdAt?: boolean
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   thumbnails?: boolean | Prisma.Snap$thumbnailsArgs<ExtArgs>
   _count?: boolean | Prisma.SnapCountOutputTypeDefaultArgs<ExtArgs>
@@ -648,6 +686,7 @@ export type SnapSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   mimeType?: boolean
   size?: boolean
   createdById?: boolean
+  createdAt?: boolean
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["snap"]>
 
@@ -658,6 +697,7 @@ export type SnapSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   mimeType?: boolean
   size?: boolean
   createdById?: boolean
+  createdAt?: boolean
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["snap"]>
 
@@ -668,9 +708,10 @@ export type SnapSelectScalar = {
   mimeType?: boolean
   size?: boolean
   createdById?: boolean
+  createdAt?: boolean
 }
 
-export type SnapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "filename" | "mimeType" | "size" | "createdById", ExtArgs["result"]["snap"]>
+export type SnapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "filename" | "mimeType" | "size" | "createdById" | "createdAt", ExtArgs["result"]["snap"]>
 export type SnapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   thumbnails?: boolean | Prisma.Snap$thumbnailsArgs<ExtArgs>
@@ -696,6 +737,7 @@ export type $SnapPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     mimeType: string
     size: number
     createdById: number
+    createdAt: Date
   }, ExtArgs["result"]["snap"]>
   composites: {}
 }
@@ -1127,6 +1169,7 @@ export interface SnapFieldRefs {
   readonly mimeType: Prisma.FieldRef<"Snap", 'String'>
   readonly size: Prisma.FieldRef<"Snap", 'Int'>
   readonly createdById: Prisma.FieldRef<"Snap", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Snap", 'DateTime'>
 }
     
 
