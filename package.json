@@ -10,7 +10,8 @@
     "build": "nx build my-portal",
     "test": "jest test my-portal",
     "lint": "nx lint my-portal",
-    "create-component": "nx g c apps/my-app/src"
+    "create-component": "nx g c apps/my-app/src",
+    "generate-prisma-client": "npx prisma generate"
   },
   "private": true,
   "packageManager": "yarn@1.22.22",

@@ -21,10 +21,21 @@ model User {
 }
 
 model Snap {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id          Int         @id @default(autoincrement())
+  title       String?
+  filename    String
+  mimeType    String
+  size        Int
+  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdById Int
+  thumbnails  Thumbnail[]
+}
+
+model Thumbnail {
+  id       Int    @id @default(autoincrement())
+  snap     Snap   @relation(fields: [snapId], references: [id])
+  snapId   Int    @unique
+  filename String
+  mimeType String
+  size     String
 }
