@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Snap[]
+}
+
+model Snap {
+  id          Int         @id @default(autoincrement())
+  title       String?
+  filename    String
+  mimeType    String
+  size        Int
+  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdById Int
+  createdAt   DateTime    @default(now())
+  thumbnails  Thumbnail[]
+}
+
+model Thumbnail {
+  id       Int    @id @default(autoincrement())
+  snap     Snap   @relation(fields: [snapId], references: [id])
+  snapId   Int    @unique
+  filename String
+  mimeType String
+  size     String
+}
