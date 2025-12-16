@@ -1,7 +1,19 @@
 <mat-card class="dropzone-card" appearance="outlined">
-  @if (!pastedImage) {
+  @if (pastedImages.length) { @if (loading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  } @else {
+  <mat-card (click)="copyToClipboard(shareableLink)" class="clickable-card">
+    <mat-card-title-group>
+      <mat-icon mat-card-avatar>content_copy</mat-icon>
+      <mat-card-title> Click to copy image link </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>{{shareableLink?shareableLink:'Image Uploading'}}</p>
+    </mat-card-content>
+  </mat-card>
+  } } @if (!pastedImage) {
   <mat-card-title-group>
-    <mat-icon mat-card-avatar>cloud_upload</mat-icon>
+    <mat-icon mat-card-avatar>cloud_uploads</mat-icon>
     <mat-card-title>Drop files here to upload</mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
