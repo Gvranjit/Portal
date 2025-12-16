@@ -4,6 +4,7 @@ import routes from './routes';
 import { uploadFolder } from './storage.config';
 import morgan from 'morgan';
 const app = express();
+import cors from 'cors';
 
 //create a user in database if not exists
 // Anonymous user with id 'anon' is used for all uploads
@@ -23,7 +24,7 @@ async function ensureAnonymousUser() {
     console.log('Created anonymous user with id 1 and name Anonymous');
   }
 }
-
+app.use(cors({ origin: '*' })); // Allow all origins for simplicity; adjust as needed
 app.use(morgan('dev'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/i', express.static(uploadFolder));
