@@ -22,7 +22,10 @@
             "input": "apps/frontend/snapboard/public"
           }
         ],
-        "styles": ["apps/frontend/snapboard/src/styles.scss"]
+        "styles": [
+          "apps/frontend/snapboard/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
+        ]
       },
       "configurations": {
         "production": {
@@ -52,6 +55,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
+      "options": { "disableHostCheck": true },
       "continuous": true,
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {

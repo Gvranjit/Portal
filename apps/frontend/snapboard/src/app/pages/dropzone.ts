@@ -1,19 +1,29 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CdkDrag } from '@angular/cdk/drag-drop';
+import { SnapApiService } from '../services/snap-api-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dropzone',
-  imports: [MatCardModule, MatIconModule, CdkDrag],
+  imports: [MatCardModule, MatIconModule, CdkDrag, MatProgressBarModule],
+  providers: [SnapApiService, MatSnackBar],
   templateUrl: './dropzone.html',
   styleUrl: './dropzone.scss',
 })
 export class Dropzone implements OnDestroy {
+  // services injection
+  apiService = inject(SnapApiService);
+  snackBar = inject(MatSnackBar);
+  /***  */
+  loading = false;
   pastedImages: string[] = [];
   redoStack: string[] = [];
   _pastedImage: string | null = null;
   imageScale = 1;
+  shareableLink: string | null = null;
   get pastedImage(): string | null {
     return this._pastedImage;
   }
@@ -54,10 +64,30 @@ export class Dropzone implements OnDestroy {
           if (file) {
             // Handle the pasted file (e.g., upload it or display it)
             this.pastedImage = URL.createObjectURL(file);
+
+            //upload as well
+            this.uploadPastedImage(file);
           }
         }
       }
     }
+  }
+
+  uploadPastedImage(file: Blob): void {
+    this.loading = true;
+    const formData = new FormData();
+    formData.append('file', file);
+    this.apiService.postData(formData).subscribe({
+      next: (response) => {
+        console.log('Upload successful:', response);
+        this.shareableLink = response.snap.url; // assuming the response contains the file URL
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Upload failed:', error);
+        this.loading = false;
+      },
+    });
   }
 
   private undoHandler(): void {
@@ -100,6 +130,22 @@ export class Dropzone implements OnDestroy {
         otherElement.style.zIndex = '1';
       }
     });
+  }
+
+  copyToClipboard(shareableLink: string | null): void {
+    navigator.clipboard.writeText(shareableLink ?? '').then(
+      () => {
+        console.log('Link copied to clipboard');
+        this.snackBar.open('Link copied to clipboard', 'Close', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
+      },
+      (err) => {
+        console.error('Could not copy text: ', err);
+      }
+    );
   }
 
   ngOnDestroy() {

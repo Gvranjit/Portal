@@ -15,7 +15,8 @@ export const uploadController = async (
       return res.status(400).send({ message: 'No file uploaded' });
     }
     // save the metadata for the uploaded file in database
-    await prisma.snap.create({
+    const snap = await prisma.snap.create({
+      include: { createdBy: true },
       data: {
         filename: req.file.filename,
         mimeType: req.file.mimetype,
@@ -26,7 +27,7 @@ export const uploadController = async (
 
     res.send({
       message: 'File uploaded successfully',
-      url: new URL(`/i/${req.file.filename}`, env.BASE_URL),
+      snap: prepareSnapDetailObject(snap),
     });
   } catch (error) {
     next(error);
@@ -39,15 +40,7 @@ export const getSnapsController = async (
 ) => {
   try {
     const snaps = await prisma.snap.findMany({ include: { createdBy: true } }); // TODO: Add pagination
-    const payload = snaps.map((snap) => ({
-      id: snap.id,
-      filename: snap.filename,
-      url: new URL(`/i/${snap.filename}`, env.BASE_URL).toString(),
-      mimeType: snap.mimeType,
-      size: snap.size,
-      createdAt: snap.createdAt,
-      createdByEmail: snap.createdBy.email,
-    }));
+    const payload = snaps.map((snap) => prepareSnapDetailObject(snap));
     res.send({
       message: 'Snaps retrieved successfully',
       data: payload,
@@ -56,3 +49,15 @@ export const getSnapsController = async (
     next(error);
   }
 };
+
+function prepareSnapDetailObject(snap: any) {
+  return {
+    id: snap.id,
+    filename: snap.filename,
+    url: new URL(`/i/${snap.filename}`, env.BASE_URL).toString(),
+    mimeType: snap.mimeType,
+    size: snap.size,
+    createdAt: snap.createdAt,
+    createdByEmail: snap.createdBy.email,
+  };
+}
