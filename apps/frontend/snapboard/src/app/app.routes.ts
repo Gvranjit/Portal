@@ -13,6 +13,6 @@ export const appRoutes: Route[] = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'dropzone',
   },
 ];
