@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
-import { getSnapApiUrl } from './snap-api-service.constants';
+import { API_CONSTANTS } from './snap-api-service.constants';
 import {
   GetSnapsResponse,
   UploadSnapResponse,
@@ -13,15 +13,26 @@ import {
 export class SnapApiService {
   private http = inject(HttpClient);
 
+  get currentEnvUrl(): string {
+    //based on the current client url
+    return window.location.origin;
+  }
+
   getData(): Observable<GetSnapsResponse> {
     return this.http.get(
-      getSnapApiUrl('GET_SNAPS')
+      new URL(
+        API_CONSTANTS.SNAP_FILE_SERVICE.GET_SNAPS,
+        this.currentEnvUrl
+      ).toString()
     ) as Observable<GetSnapsResponse>;
   }
 
   postData(data: FormData): Observable<UploadSnapResponse> {
     return this.http.post(
-      getSnapApiUrl('POST_UPLOAD_SNAP'),
+      new URL(
+        API_CONSTANTS.SNAP_FILE_SERVICE.POST_UPLOAD_SNAP,
+        this.currentEnvUrl
+      ).toString(),
       data
     ) as Observable<UploadSnapResponse>;
   }
