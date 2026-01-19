@@ -9,6 +9,7 @@
     "files-service": "npx nx serve snapboard-files-service",
     "build-portal": "nx build my-portal",
     "build-snapboard": "nx build snapboard",
+    "build-files-service": "nx build snapboard-files-service",
     "run-snapboard": "serve dist/apps/frontend/snapboard -l 4201",
     "test": "jest test my-portal",
     "lint": "nx lint my-portal",
