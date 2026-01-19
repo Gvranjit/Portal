@@ -4,10 +4,15 @@ import { Dropzone } from './pages/dropzone';
 export const appRoutes: Route[] = [
   {
     path: '',
-    component: Dropzone,
+    redirectTo: 'dropzone',
+    pathMatch: 'full',
   },
   {
     path: 'dropzone',
     component: Dropzone,
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
