@@ -6,6 +6,7 @@ import {
   GetSnapsResponse,
   UploadSnapResponse,
 } from './snap-api-response.model';
+import { BASE_URL, PRODUCTION_BASE_URL } from '../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,11 @@ export class SnapApiService {
 
   get currentEnvUrl(): string {
     //based on the current client url
-    return window.location.origin;
+    //if it contains 'localhost' use dev api url
+    if (window.location.hostname.includes('localhost')) {
+      return BASE_URL;
+    }
+    return PRODUCTION_BASE_URL;
   }
 
   getData(): Observable<GetSnapsResponse> {
