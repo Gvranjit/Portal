@@ -54,7 +54,7 @@ function prepareSnapDetailObject(snap: any) {
   return {
     id: snap.id,
     filename: snap.filename,
-    url: new URL(`/#/i/${snap.filename}`, env.BASE_URL).toString(),
+    url: new URL(`/i/${snap.filename}`, env.BASE_URL).toString(),
     mimeType: snap.mimeType,
     size: snap.size,
     createdAt: snap.createdAt,
