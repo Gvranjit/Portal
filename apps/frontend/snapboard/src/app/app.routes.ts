@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { Dropzone } from './pages/dropzone';
+import { ImageViewer } from './pages/image-viewer/image-viewer';
 
 export const appRoutes: Route[] = [
   {
@@ -11,6 +12,7 @@ export const appRoutes: Route[] = [
     path: 'dropzone',
     component: Dropzone,
   },
+  { path: 'i/:filename', component: ImageViewer },
   {
     path: '**',
     redirectTo: 'dropzone',
