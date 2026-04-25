@@ -9,13 +9,13 @@
     "files-service": "npx nx serve snapboard-files-service",
     "build-portal": "nx build my-portal",
     "build-snapboard": "nx build snapboard",
-    "build-files-service": "nx build snapboard-files-service && copy:env",
+    "build-files-service": "rimraf dist/apps/backend/snapboard-files-service && nx build snapboard-files-service && yarn copy:env",
     "run-snapboard": "serve dist/apps/frontend/snapboard -l 4201",
     "test": "jest test my-portal",
     "lint": "nx lint my-portal",
     "create-component": "nx g c apps/my-app/src",
     "generate-prisma-client": "npx prisma generate",
-    "copy:env": "copyfiles -u 1 .env dist/apps/backend/snapboard-files-service/.env"
+    "copy:env": "copyfiles -u 3 apps/backend/snapboard-files-service/.env dist/apps/backend/snapboard-files-service"
   },
   "private": true,
   "packageManager": "yarn@1.22.22",
@@ -44,6 +44,7 @@
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
     "pg": "^8.16.3",
+    "rimraf": "^6.1.3",
     "rxjs": "~7.8.0",
     "serve": "^14.2.5",
     "sharp": "^0.34.5",
