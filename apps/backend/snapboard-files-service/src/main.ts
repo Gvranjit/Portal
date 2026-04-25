@@ -9,6 +9,7 @@ import cors from 'cors';
 //create a user in database if not exists
 // Anonymous user with id 'anon' is used for all uploads
 import { prisma } from './client';
+import { ALLOWED_ORIGINS } from './constants/allowed-origins';
 
 async function ensureAnonymousUser() {
   const anonUser = await prisma.user.findUnique({
@@ -24,7 +25,7 @@ async function ensureAnonymousUser() {
     console.log('Created anonymous user with id 1 and name Anonymous');
   }
 }
-app.use(cors({ origin: '*' })); // Allow all origins for simplicity; adjust as needed
+app.use(cors({ origin: ALLOWED_ORIGINS })); // Allow all origins for simplicity; adjust as needed
 app.use(morgan('dev'));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/i', express.static(uploadFolder));
