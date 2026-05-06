@@ -468,10 +468,6 @@ export type SnapUncheckedUpdateManyWithoutCreatedByNestedInput = {
   deleteMany?: Prisma.SnapScalarWhereInput | Prisma.SnapScalarWhereInput[]
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type SnapCreateNestedOneWithoutThumbnailsInput = {
   create?: Prisma.XOR<Prisma.SnapCreateWithoutThumbnailsInput, Prisma.SnapUncheckedCreateWithoutThumbnailsInput>
   connectOrCreate?: Prisma.SnapCreateOrConnectWithoutThumbnailsInput

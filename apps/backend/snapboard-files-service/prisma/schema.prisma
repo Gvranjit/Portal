@@ -14,10 +14,15 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Snap[]
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  name         String?
+  passwordHash String?
+  role         Role?      @relation(fields: [roleId], references: [id])
+  roleId       Int?
+  createdAt    DateTime   @default(now())
+  posts        Snap[]
+  
 }
 
 model Snap {
@@ -39,4 +44,21 @@ model Thumbnail {
   filename String
   mimeType String
   size     String
+}
+
+
+model Role {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  description String?
+  permissions Permission[]
+  users       User[]
+  createdAt   DateTime     @default(now())
+}
+
+model Permission {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  description String?
+  roles       Role[]
 }

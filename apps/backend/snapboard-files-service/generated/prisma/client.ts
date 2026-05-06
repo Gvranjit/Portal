@@ -54,3 +54,13 @@ export type Snap = Prisma.SnapModel
  * 
  */
 export type Thumbnail = Prisma.ThumbnailModel
+/**
+ * Model Role
+ * 
+ */
+export type Role = Prisma.RoleModel
+/**
+ * Model Permission
+ * 
+ */
+export type Permission = Prisma.PermissionModel
