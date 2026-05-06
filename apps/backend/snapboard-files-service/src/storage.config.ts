@@ -5,12 +5,12 @@ import os from 'os';
 
 // Use path.resolve from the workspace root to target service folder
 const homeDir = os.homedir();
-const uploadFolder = path.resolve(homeDir, 'snapboard', 'uploads '); // TODO; make sure ALL folders exist or create them if not
+const uploadFolder = path.resolve(homeDir, 'snapboard', 'uploads'); // TODO; make sure ALL folders exist or create them if not
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (fs.existsSync(uploadFolder) === false) {
+    if (!fs.existsSync(uploadFolder)) {
       console.log('Create upload folder:', uploadFolder);
-      fs.mkdirSync(uploadFolder);
+      fs.mkdirSync(uploadFolder, { recursive: true });
     }
     cb(null, uploadFolder);
   },

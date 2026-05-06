@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable, inject } from '@angular/core';
 import { API_CONSTANTS } from './snap-api-service.constants';
@@ -40,5 +40,16 @@ export class SnapApiService {
       ).toString(),
       data
     ) as Observable<UploadSnapResponse>;
+  }
+
+  uploadFile(data: FormData): Observable<HttpEvent<UploadSnapResponse>> {
+    return this.http.post<UploadSnapResponse>(
+      new URL(
+        API_CONSTANTS.SNAP_FILE_SERVICE.POST_UPLOAD_SNAP,
+        this.currentEnvUrl
+      ).toString(),
+      data,
+      { reportProgress: true, observe: 'events' }
+    );
   }
 }
